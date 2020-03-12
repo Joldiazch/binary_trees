@@ -78,12 +78,13 @@ const binary_tree_t *second)
 {
 	if (!first || !second)
 		return (NULL);
-	if (first->parent == second || !second->parent)
+	if (first->parent == second)
 		return ((binary_tree_t *)second);
-	if (second->parent == first || !first->parent)
+	if (second->parent == first)
 		return ((binary_tree_t *)first);
-	if (sibling(first) == second || uncle(first) == second ||
-		uncle(second) == first)
+	if (sibling(first) == second || uncle(second) == first)
 		return (first->parent);
+	if (uncle(first) == second)
+		return (second->parent);
 	return (binary_trees_ancestor(first->parent, second->parent));
 }

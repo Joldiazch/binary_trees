@@ -1,7 +1,7 @@
 #include "binary_trees.h"
 
 /**
-* binary_tree_uncle - function that find uncles.
+* uncle - function that find uncles.
 * @node: node parent
 * Return: node uncle
 */
@@ -39,7 +39,7 @@ binary_tree_t *uncle(const binary_tree_t *node)
 #include "binary_trees.h"
 
 /**
-* binary_tree_sibling - function that find siblings.
+* sibling - function that find siblings.
 * @node: node parent
 * Return: node sibling
 */
@@ -69,21 +69,21 @@ binary_tree_t *sibling(const binary_tree_t *node)
 /**
 * binary_trees_ancestor - function that find siblings.
 * @first: node parent
-* @second: node 
+* @second: node
 * Return: node sibling
 */
 
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
-                                    const binary_tree_t *second)
+const binary_tree_t *second)
 {
-    if (!first || !second)
-        return (NULL);
-    if (first->parent == second)
-        return (binary_tree_t *)second;
-    if (second->parent == first)
-        return (binary_tree_t *)first;
-    if (sibling(first) == second || uncle(first) == second ||
-        uncle(second) == first)
-        return (first->parent);
-    return (binary_trees_ancestor(first->parent, second->parent));
+	if (!first || !second)
+		return (NULL);
+	if (first->parent == second)
+		return ((binary_tree_t *)second);
+	if (second->parent == first)
+		return ((binary_tree_t *)first);
+	if (sibling(first) == second || uncle(first) == second ||
+		uncle(second) == first)
+		return (first->parent);
+	return (binary_trees_ancestor(first->parent, second->parent));
 }

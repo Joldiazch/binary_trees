@@ -80,9 +80,9 @@ const binary_tree_t *second)
 		return (NULL);
 	if (first->n == second->n)
 		return (binary_tree_t *)first;
-	if (first->parent == second)
+	if (first->parent == second || !second->parent)
 		return ((binary_tree_t *)second);
-	if (second->parent == first)
+	if (second->parent == first || !first->parent)
 		return ((binary_tree_t *)first);
 	if (sibling(first) == second || uncle(second) == first)
 		return (first->parent);

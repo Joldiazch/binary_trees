@@ -32,11 +32,16 @@ int binary_tree_is_full(const binary_tree_t *tree)
 	if (!tree)
 		return (0);
 
-	l_node = tree->left ? count(tree->left) : 1;
-	r_node = tree->right ? count(tree->right) : 1;
+	if (tree->left && tree->right)
+	{
+		l_node = tree->left ? count(tree->left) : 1;
+		r_node = tree->right ? count(tree->right) : 1;
 
-	if (l_node == r_node)
-		return (1);
-	else
-		return (0);
+		if (l_node == r_node)
+			return (1);
+		else
+			return (0);
+	}
+	return (0);
+
 }

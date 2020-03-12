@@ -15,14 +15,15 @@ binary_tree_t *binary_tree_sibling(binary_tree_t *node)
 
 	value = node->n;
 
-	if (node->parent && node->parent->left->n != value &&
-		node->parent->left)
-		return (node->parent->left);
+	if (node->parent->left && node->parent->right)
+	{
+		if (node->parent->left->n != value &&
+			node->parent->left)
+			return (node->parent->left);
 
-	else if (node->parent && node->parent->right->n != value &&
-			node->parent->right)
-		return (node->parent->right);
-
-	else
-		return (NULL);
+		else if (node->parent->right->n != value &&
+				node->parent->right)
+			return (node->parent->right);
+	}
+	return (NULL);
 }

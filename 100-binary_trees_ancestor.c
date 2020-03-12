@@ -78,6 +78,8 @@ const binary_tree_t *second)
 {
 	if (!first || !second)
 		return (NULL);
+	if (first->n == second->n)
+		return (binary_tree_t *)first;
 	if (first->parent == second)
 		return ((binary_tree_t *)second);
 	if (second->parent == first)
